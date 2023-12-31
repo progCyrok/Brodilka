@@ -1,0 +1,9 @@
+# ninja log v5
+0	629	1704021188079803598	CMakeFiles/sfml_source.dir/main.cpp.o	bca267a5aa36a539
+2	703	1704022449112629099	CMakeFiles/your_executable_name.dir/main.cpp.o	b8c38ee90a31213e
+0	558	1704021282681624186	CMakeFiles/opengl_game.dir/main.cpp.o	ec3088d9887ad979
+703	819	1704022449231043007	your_executable_name	24a6c93c8563c1fa
+2	530	1704022958717592761	CMakeFiles/your_executable_name.dir/main.cpp.o	b8c38ee90a31213e
+530	625	1704022958814247816	your_executable_name	24a6c93c8563c1fa
+3	596	1704023333804600158	CMakeFiles/your_executable_name.dir/main.cpp.o	b8c38ee90a31213e
+596	692	1704023333901310499	your_executable_name	24a6c93c8563c1fa
