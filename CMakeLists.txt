@@ -4,7 +4,11 @@ project(opengl_game)
 set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCE_FILES launch.cpp
-        my_keyboard.h)
+        my_keyboard.h
+        window.h
+        mouse.h
+        objects.h
+        events.h)
 
 add_executable(Start ${SOURCE_FILES})
 
