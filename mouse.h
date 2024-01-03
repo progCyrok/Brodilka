@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "character.h"
 void mouse(sf::RenderWindow &window, sf::Sprite &sprite, sf::Texture &texture) {
   sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
   sf::Vector2f spritePosition = sprite.getPosition();

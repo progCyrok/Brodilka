@@ -8,7 +8,8 @@ set(SOURCE_FILES launch.cpp
         window.h
         mouse.h
         objects.h
-        events.h)
+        events.h
+        character.h)
 
 add_executable(Start ${SOURCE_FILES})
 

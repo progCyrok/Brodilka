@@ -3,7 +3,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-void clicks(sf::RenderWindow &window, sf::Event &event, sf::Sprite &sprite) {
+void clicks(sf::RenderWindow &window, sf::Event &event) {
     if (event.key.code == sf::Keyboard::Escape)
       window.close();
 }

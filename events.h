@@ -8,7 +8,7 @@
 void main_events(sf::RenderWindow &window, sf::Event &event, sf::Sprite &sprite, sf::Texture &texture) {
   while (window.pollEvent(event)) {
     if (event.type == sf::Event::KeyPressed) {
-      clicks(window, event, sprite);
+      clicks(window, event);
     }
     if (event.type == sf::Event::Closed) {
       window.close();
