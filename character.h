@@ -3,42 +3,32 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "objects.h"
+#include "mouse.h"
+
+
 
 void view (sf::RenderWindow &window, sf::Sprite &sprite) {
+  sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
   sf::Vector2f spritePosition = sprite.getPosition();
-  sf::Vertex main_line[] = {
-          sf::Vertex(sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y)),
-          sf::Vertex(sf::Vector2f(0, 0))
-      };
-  main_line[1].position = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
-  main_line[0].color = sf::Color::Red;
-  main_line[1].color = sf::Color::Red;
-
-
-
-  const int pointCount = 1000;
-  const float radius = 100.0f;
-  const float centerX = sf::Mouse::getPosition(window).x;
-  const float centerY = sf::Mouse::getPosition(window).y;
-
-  for (int i = 0; i < pointCount; ++i)
-  {
-      float angle = (i * 180.0f / (pointCount / 2 - 1)) * 3.14f / 180.0f; // Начинаем с -90 градусов чтобы полуокружность смотрела вверх
-    float x = centerX + std::cos(angle) * radius;
-    float y = centerY + std::sin(angle) * radius;
-
-    // Отрисовываем линию
-    sf::Vertex other_line[] = {
-        sf::Vertex(sf::Vector2f(sprite.getPosition().x, sprite.getPosition().y)),
-        sf::Vertex(sf::Vector2f(x, y))
-    };
-    other_line[0].color = sf::Color::Blue;
-    other_line[1].color = sf::Color::Blue;
-    window.draw(other_line, 2, sf::Lines);
-
+  float dx = mousePosition.x - spritePosition.x;
+  float dy = mousePosition.y - spritePosition.y;
+  float distance = std::sqrt(dx * dx + dy * dy);
+  if (distance != 200.f) {
+    float factor = 200.f / distance;
+    dx *= factor;
+    dy *= factor;
   }
-
-
-  window.draw(main_line, 2, sf::Lines);
-
+  float angle = std::atan2(dy, dx);
+  const int rayCount = 201;
+  for (int k = 0; k < rayCount; ++k) {
+    float angleOffset = (static_cast<float>(k) / static_cast<float>(rayCount - 1) - 0.5f) * 1.0f;
+    float newAngle = angle + angleOffset;
+    sf::Vertex ray[] ={
+            sf::Vertex(sprite.getPosition()),
+            sf::Vertex(sprite.getPosition() + sf::Vector2f(200.f * std::cos(newAngle), 200.f * std::sin(newAngle)))
+        };
+    ray[0].color = sf::Color::White;
+    ray[1].color = sf::Color::White;
+    window.draw(ray, 2, sf::Lines);
+  }
 }

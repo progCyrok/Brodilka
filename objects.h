@@ -41,12 +41,13 @@ void createWalls(sf::Sprite &sprite) {
   }
 }
 
+
+
 void createCubs (sf::Sprite sprite) {
   if (cubs.size() == 0) {
     int numCubes = rand() % 5 + 1;;
     for (int i = 0; i < numCubes; ++i) {
       int x = std::rand() % 700, y = std::rand() % 500;
-      int size_ = std::rand() % 70;
       cubs.push_back(sf::RectangleShape(sf::Vector2f(70, 70)));
       cubs.back().setFillColor(sf::Color::Black);
       cubs.back().setPosition(x, y);
